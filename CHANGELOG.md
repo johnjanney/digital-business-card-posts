@@ -25,7 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Filters `dbcp_template_path` (template override) and `dbcp_card_data`; actions `dbcp_head` and `dbcp_footer`.
 - QR code of each published card's permalink generated with phpqrcode at error-correction level H, cached as `wp-content/uploads/digital-business-card-posts/{post_id}.png`, regenerated automatically when the permalink changes (D17), deleted with the card. Shown in a QR code box on the edit screen with a Download PNG link. Filter `dbcp_qr_module_size`.
 - `[digital_business_card id="123"]` shortcode embedding a published card inside any post or page, with the card stylesheet enqueued.
-- Settings storage with defaults: rewrite base, default accent color, default `noindex`, delete data on uninstall. Rewrite rules are flushed when the base changes.
+- Settings page (Settings → Digital Business Cards): card URL base, default accent color (color picker), default `noindex`, delete data on uninstall. Rewrite rules are flushed when the base changes. Settings link on the Plugins screen.
 
 ### Changed
 

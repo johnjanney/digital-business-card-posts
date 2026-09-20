@@ -104,6 +104,19 @@ class DBCP_Settings {
 		add_action( 'update_option_' . self::OPTION, array( $this, 'on_update' ), 10, 2 );
 		add_action( 'add_option_' . self::OPTION, array( $this, 'request_flush' ) );
 		add_action( 'init', array( $this, 'maybe_flush' ), 99 );
+		add_filter( 'plugin_action_links_' . plugin_basename( DBCP_FILE ), array( $this, 'action_links' ) );
+	}
+
+	/**
+	 * Add a Settings link on the Plugins screen.
+	 *
+	 * @param string[] $links Existing links.
+	 * @return string[]
+	 */
+	public function action_links( array $links ): array {
+		$url = admin_url( 'options-general.php?page=dbcp-settings' );
+		array_unshift( $links, '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'digital-business-card-posts' ) . '</a>' );
+		return $links;
 	}
 
 	/**
