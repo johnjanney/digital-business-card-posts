@@ -157,11 +157,12 @@ final class DBCP_Plugin {
 	}
 
 	/**
-	 * Deactivation: flush rewrite rules. Roles, capabilities, settings and cards are kept.
+	 * Deactivation: drop the rewrite rules so WordPress rebuilds them without the card rules on
+	 * the next request. Roles, capabilities, settings and cards are kept.
 	 *
 	 * @return void
 	 */
 	public static function deactivate(): void {
-		flush_rewrite_rules();
+		delete_option( 'rewrite_rules' );
 	}
 }

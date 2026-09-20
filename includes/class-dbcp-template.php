@@ -30,7 +30,7 @@ class DBCP_Template {
 		add_filter( 'template_include', array( $this, 'template_include' ), 99 );
 		add_action( 'template_redirect', array( $this, 'card_page_headers' ) );
 		add_filter( 'show_admin_bar', array( $this, 'hide_admin_bar' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_style' ) );
+		add_action( 'init', array( __CLASS__, 'register_style' ) );
 		add_shortcode( 'digital_business_card', array( $this, 'shortcode' ) );
 	}
 
@@ -54,7 +54,7 @@ class DBCP_Template {
 			return '';
 		}
 		if ( ! wp_style_is( self::STYLE_HANDLE, 'registered' ) ) {
-			$this->register_style();
+			self::register_style();
 		}
 		wp_enqueue_style( self::STYLE_HANDLE );
 		return '<div class="dbcp-embed">' . self::render_card( $post_id ) . '</div>';
@@ -70,11 +70,11 @@ class DBCP_Template {
 	}
 
 	/**
-	 * Register the card stylesheet (enqueued by the page template and the shortcode).
+	 * Register the card stylesheet on init (the standalone card page never fires wp_enqueue_scripts).
 	 *
 	 * @return void
 	 */
-	public function register_style(): void {
+	public static function register_style(): void {
 		wp_register_style( self::STYLE_HANDLE, DBCP_URL . 'assets/card.css', array(), DBCP_VERSION );
 	}
 
