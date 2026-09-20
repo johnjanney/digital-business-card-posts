@@ -1,0 +1,33 @@
+# Files excluded from `git archive` (and therefore from the release zip built by bin/build.sh).
+/.editorconfig        export-ignore
+/.gitattributes       export-ignore
+/.gitignore           export-ignore
+/.github              export-ignore
+/bin                  export-ignore
+/composer.json        export-ignore
+/composer.lock        export-ignore
+/dist                 export-ignore
+/phpcs.xml            export-ignore
+/phpunit.xml.dist     export-ignore
+/reference            export-ignore
+/tests                export-ignore
+/AGENTS.md            export-ignore
+/CHANGELOG.md         export-ignore
+/DECISIONS.md         export-ignore
+/INSTALLATION.md      export-ignore
+/INSTRUCTIONS.md      export-ignore
+/OPENQUESTIONS.md     export-ignore
+/PROJECTBRIEF.md      export-ignore
+/README.md            export-ignore
+/RELEASE-CHECKLIST.md export-ignore
+/VERSIONING.md        export-ignore
+
+# Normalize line endings.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.zip binary
+
+# Keep original bytes: the reference vCard must stay CRLF, the vendored library stays unmodified.
+*.vcf -text
+/vendor/phpqrcode/** -text
