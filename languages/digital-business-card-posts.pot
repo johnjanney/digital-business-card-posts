@@ -1,0 +1,400 @@
+# Copyright (C) 2026 John Janney
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Digital Business Card Posts 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/johnjanney/digital-business-card-posts/issues\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-20T18:34:51-05:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: digital-business-card-posts\n"
+
+#. Plugin Name of the plugin
+#: digital-business-card-posts.php
+msgid "Digital Business Card Posts"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: digital-business-card-posts.php
+msgid "https://github.com/johnjanney/digital-business-card-posts"
+msgstr ""
+
+#. Description of the plugin
+#: digital-business-card-posts.php
+msgid "Digital business card pages, one per person, each with a downloadable vCard and a QR code."
+msgstr ""
+
+#. Author of the plugin
+#: digital-business-card-posts.php
+msgid "John Janney"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:47
+msgid "First name"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:56
+msgid "Last name"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:65
+msgid "Job title"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:73
+msgid "Company"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:81
+msgid "Tagline"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:87
+msgid "Optional. Shown in italics under the company. Not included in the vCard."
+msgstr ""
+
+#: includes/class-dbcp-meta.php:90
+msgid "Work phone"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:96
+msgid "Type it as it should be displayed, including the country code, e.g. +1 214-810-1131."
+msgstr ""
+
+#: includes/class-dbcp-meta.php:99
+msgid "Mobile phone"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:107
+#: templates/card.php:66
+msgid "Email"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:115
+#: templates/card.php:74
+msgid "Website"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:121
+msgid "Full URL including https://. The card shows only the host name."
+msgstr ""
+
+#: includes/class-dbcp-meta.php:124
+msgid "Street"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:132
+msgid "Suite"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:140
+msgid "City"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:148
+msgid "State"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:156
+msgid "Postal code"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:164
+msgid "Country"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:172
+msgid "Logo"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:178
+msgid "Optional. Shown at the top left of the card, 96 px tall. Use a trimmed PNG with a transparent background, at least 400 px wide."
+msgstr ""
+
+#: includes/class-dbcp-meta.php:181
+msgid "Accent color"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:187
+msgid "Used for the square after the name, the Save contact button and focus outlines."
+msgstr ""
+
+#: includes/class-dbcp-meta.php:190
+#: includes/class-dbcp-settings.php:199
+msgid "Search engines"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:196
+msgid "Hide this card from search engines (noindex)"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:315
+msgid "Card details"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:330
+msgid "Name"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:331
+msgid "Position"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:332
+msgid "Contact"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:333
+msgid "Address"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:334
+msgid "Appearance and visibility"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:395
+#: includes/class-dbcp-meta.php:404
+msgid "Select logo"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:395
+msgid "Use this logo"
+msgstr ""
+
+#: includes/class-dbcp-meta.php:406
+msgid "Remove"
+msgstr ""
+
+#: includes/class-dbcp-plugin.php:139
+msgid "Digital Business Card Posts: the PHP GD extension is not installed. QR codes cannot be generated and contact photos cannot be resized until it is enabled."
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:71
+msgctxt "post type general name"
+msgid "Business Cards"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:72
+msgctxt "post type singular name"
+msgid "Business Card"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:73
+msgctxt "admin menu"
+msgid "Business Cards"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:74
+msgctxt "add new on admin bar"
+msgid "Business Card"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:75
+msgid "Add New"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:76
+msgid "Add New Business Card"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:77
+msgid "New Business Card"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:78
+msgid "Edit Business Card"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:79
+msgid "View Card"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:80
+msgid "All Business Cards"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:81
+msgid "Search Business Cards"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:82
+msgid "No business cards found."
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:83
+msgid "No business cards found in Trash."
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:84
+msgid "Contact photo"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:85
+msgid "Set contact photo"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:86
+msgid "Remove contact photo"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:87
+msgid "Use as contact photo"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:88
+#: includes/class-dbcp-post-type.php:249
+msgid "Business card published."
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:89
+#: includes/class-dbcp-post-type.php:247
+#: includes/class-dbcp-post-type.php:248
+msgid "Business card updated."
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:96
+msgid "Digital business cards, one per person."
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:174
+msgid "Card Holder"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:226
+msgid "Display name, e.g. John Janney (filled from first and last name if empty)"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:243
+msgid "View card"
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:250
+msgid "Business card saved."
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:251
+msgid "Business card submitted."
+msgstr ""
+
+#: includes/class-dbcp-post-type.php:252
+msgid "Business card draft updated."
+msgstr ""
+
+#: includes/class-dbcp-qr.php:239
+msgid "QR code"
+msgstr ""
+
+#: includes/class-dbcp-qr.php:257
+msgid "Publish the card to generate its QR code."
+msgstr ""
+
+#: includes/class-dbcp-qr.php:262
+msgid "The PHP GD extension is required to generate QR codes."
+msgstr ""
+
+#: includes/class-dbcp-qr.php:269
+msgid "The QR code could not be generated. Check that the uploads folder is writable."
+msgstr ""
+
+#: includes/class-dbcp-qr.php:278
+msgid "QR code for this card"
+msgstr ""
+
+#: includes/class-dbcp-qr.php:284
+msgid "Download PNG"
+msgstr ""
+
+#: includes/class-dbcp-qr.php:286
+msgid "Error-correction level H. Regenerated automatically when the card URL changes."
+msgstr ""
+
+#: includes/class-dbcp-settings.php:118
+msgid "Settings"
+msgstr ""
+
+#: includes/class-dbcp-settings.php:176
+msgid "Card pages"
+msgstr ""
+
+#: includes/class-dbcp-settings.php:183
+msgid "Card URL base"
+msgstr ""
+
+#: includes/class-dbcp-settings.php:191
+msgid "Default accent color"
+msgstr ""
+
+#: includes/class-dbcp-settings.php:206
+msgid "Uninstall"
+msgstr ""
+
+#: includes/class-dbcp-settings.php:220
+#: includes/class-dbcp-settings.php:221
+#: includes/class-dbcp-settings.php:239
+msgid "Digital Business Cards"
+msgstr ""
+
+#: includes/class-dbcp-settings.php:262
+msgid "Lowercase letters, numbers and hyphens. Changing it flushes rewrite rules; old card URLs stop working and QR codes are regenerated as each card is opened."
+msgstr ""
+
+#: includes/class-dbcp-settings.php:275
+msgid "Used for new cards. Existing cards keep their own accent color."
+msgstr ""
+
+#: includes/class-dbcp-settings.php:288
+msgid "Hide new cards from search engines (noindex) by default"
+msgstr ""
+
+#: includes/class-dbcp-settings.php:302
+msgid "Delete all business cards when the plugin is deleted"
+msgstr ""
+
+#: includes/class-dbcp-settings.php:304
+msgid "The Card Holder role, capabilities, settings and the QR code cache are always removed on uninstall."
+msgstr ""
+
+#. translators: 1: name, 2: job title, 3: company
+#: includes/class-dbcp-template.php:237
+#, php-format
+msgid "Contact card for %1$s, %2$s at %3$s."
+msgstr ""
+
+#. translators: 1: name, 2: company
+#: includes/class-dbcp-template.php:241
+#, php-format
+msgid "Contact card for %1$s at %2$s."
+msgstr ""
+
+#. translators: 1: name, 2: job title
+#: includes/class-dbcp-template.php:245
+#, php-format
+msgid "Contact card for %1$s, %2$s."
+msgstr ""
+
+#. translators: %s: name
+#: includes/class-dbcp-template.php:248
+#, php-format
+msgid "Contact card for %s."
+msgstr ""
+
+#: templates/card.php:41
+msgid "Save contact"
+msgstr ""
+
+#: templates/card.php:50
+msgid "Work"
+msgstr ""
+
+#: templates/card.php:58
+msgid "Mobile"
+msgstr ""
+
+#: templates/card.php:92
+msgid "Directions"
+msgstr ""

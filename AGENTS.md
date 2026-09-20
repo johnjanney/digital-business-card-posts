@@ -48,6 +48,8 @@ bin/build.sh                      release zip builder
 bin/test-docker.sh                runs the tests in a PHP+GD container
 dist/                             released zips, committed, never modified
 reference/                        the prototype (see §7 below), not shipped
+screenshots/                      README screenshots from the Docker test site, not shipped
+RELEASE-CHECKLIST.md              §6 checklist results per release and pending manual tests
 ```
 
 Text domain: `digital-business-card-posts`. Prefixes: `dbcp_` for functions, options, meta keys, hooks and CSS classes; `DBCP_` for classes and constants.

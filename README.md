@@ -18,7 +18,17 @@ Built to replace a hand-made prototype (a static HTML page plus a `.vcf` file). 
 
 ## Screenshots
 
-_Screenshots will be added once the plugin has been run on a live site. Until then, `reference/index.html` and `reference/john-janney-wallet-pass.png` show the target design._
+Taken on a WordPress 7.0 test site with the sample data from the brief.
+
+| Card page (light) | Card page (dark) | Shortcode in a theme |
+|---|---|---|
+| ![Card page, light mode](screenshots/card-page-light.png) | ![Card page, dark mode](screenshots/card-page-dark.png) | ![Card embedded with the shortcode](screenshots/shortcode-embed.png) |
+
+| Edit screen | Settings |
+|---|---|
+| ![Edit screen with Card details and QR code boxes](screenshots/edit-screen.png) | ![Settings page](screenshots/settings.png) |
+
+![QR code](screenshots/qr-code.png)
 
 ## Requirements
 

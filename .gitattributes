@@ -31,3 +31,4 @@
 # Keep original bytes: the reference vCard must stay CRLF, the vendored library stays unmodified.
 *.vcf -text
 /vendor/phpqrcode/** -text
+/screenshots           export-ignore
