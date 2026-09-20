@@ -48,6 +48,17 @@ class DBCP_Post_Type {
 		add_action( 'pre_get_posts', array( $this, 'scope_admin_list' ) );
 		add_filter( 'enter_title_here', array( $this, 'title_placeholder' ), 10, 2 );
 		add_filter( 'post_updated_messages', array( $this, 'updated_messages' ) );
+		add_action( 'add_meta_boxes_' . self::POST_TYPE, array( $this, 'remove_custom_fields_box' ), 99 );
+	}
+
+	/**
+	 * The post type supports custom-fields so that meta is exposed over REST (D2), but the generic
+	 * Custom Fields box would duplicate the Card details box, so it is removed.
+	 *
+	 * @return void
+	 */
+	public function remove_custom_fields_box(): void {
+		remove_meta_box( 'postcustom', self::POST_TYPE, 'normal' );
 	}
 
 	/**
@@ -89,7 +100,7 @@ class DBCP_Post_Type {
 				'rest_base'           => 'business-cards',
 				'menu_position'       => 21,
 				'menu_icon'           => 'dashicons-id-alt',
-				'supports'            => array( 'title', 'thumbnail', 'author' ),
+				'supports'            => array( 'title', 'thumbnail', 'author', 'custom-fields' ),
 				'has_archive'         => false,
 				'query_var'           => self::QUERY_VAR,
 				'rewrite'             => array(

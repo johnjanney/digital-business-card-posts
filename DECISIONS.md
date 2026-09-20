@@ -231,3 +231,11 @@ Format per entry: **ID**, date, decision, context, alternatives considered, cons
 - **Context:** QR PNGs are derived from the permalink and regenerate on demand (D17), so deleting them loses nothing. Card posts are user content.
 - **Alternatives considered:** Keep the PNGs unless the delete setting is on.
 - **Consequences:** Reinstalling regenerates QR codes the first time each card is opened in the admin.
+
+## D29 — Post type supports `custom-fields` so meta is exposed over REST; the generic box is removed
+
+- **Date:** 2026-09-20
+- **Decision:** `business_card` declares `custom-fields` support, and the plugin removes the generic Custom Fields meta box from the card edit screen.
+- **Context:** Verified on a live site: the REST API only includes the `meta` object for post types that support `custom-fields`, even when every key is registered with `show_in_rest`. Without it D2 (fields available over REST) was not actually met. The generic box would duplicate the Card details box.
+- **Alternatives considered:** Register a custom REST field per meta key (more code, same result); leave meta out of REST.
+- **Consequences:** `GET /wp-json/wp/v2/business-cards/{id}` returns all card fields under `meta`. Amends D2 and D27; neither is reversed.
