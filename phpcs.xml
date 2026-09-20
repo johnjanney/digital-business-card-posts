@@ -44,6 +44,23 @@
 		</properties>
 	</rule>
 
+	<rule ref="WordPress.WP.Capabilities">
+		<properties>
+			<property name="custom_capabilities" type="array">
+				<element value="edit_business_cards"/>
+				<element value="edit_others_business_cards"/>
+				<element value="edit_private_business_cards"/>
+				<element value="edit_published_business_cards"/>
+				<element value="publish_business_cards"/>
+				<element value="read_private_business_cards"/>
+				<element value="delete_business_cards"/>
+				<element value="delete_others_business_cards"/>
+				<element value="delete_private_business_cards"/>
+				<element value="delete_published_business_cards"/>
+			</property>
+		</properties>
+	</rule>
+
 	<rule ref="WordPress.NamingConventions.ValidHookName">
 		<properties>
 			<property name="additionalWordDelimiters" value="-"/>
