@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Uninstall removes the role, capabilities, settings and the QR cache; card posts are deleted only when the "Delete data on uninstall" setting is on (D28).
 - Admin notice when the PHP GD extension is missing.
 - Business Cards list scoped to the current user's cards for users without `edit_others_business_cards` (D20).
+- Card fields registered with `register_post_meta()` and exposed to REST, each with a sanitize and auth callback: first/last name, job title, company, tagline, work and mobile phone, email, website, six address fields, logo attachment, accent color and `noindex`.
+- Card details meta box on the classic edit screen with a media picker for the logo and a color picker for the accent color. An empty title is filled from first and last name.
 - Settings storage with defaults: rewrite base, default accent color, default `noindex`, delete data on uninstall. Rewrite rules are flushed when the base changes.
 
 ### Changed

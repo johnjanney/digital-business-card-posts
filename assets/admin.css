@@ -1,0 +1,71 @@
+/* Admin styles for the Card details and QR code meta boxes. */
+.dbcp-group {
+	border: 0;
+	border-top: 1px solid #dcdcde;
+	margin: 0;
+	padding: 12px 0 4px;
+}
+.dbcp-group:first-child {
+	border-top: 0;
+	padding-top: 4px;
+}
+.dbcp-group legend {
+	font-weight: 600;
+	padding: 0;
+	margin-bottom: 4px;
+}
+.dbcp-fields {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	gap: 10px 20px;
+}
+.dbcp-field .dbcp-label {
+	display: block;
+	font-weight: 500;
+	margin-bottom: 3px;
+}
+.dbcp-field .regular-text {
+	width: 100%;
+	max-width: 100%;
+}
+.dbcp-field .description {
+	margin: 4px 0 0;
+}
+.dbcp-field-attachment,
+.dbcp-field-checkbox,
+.dbcp-field-color {
+	grid-column: 1 / -1;
+}
+.dbcp-media-preview {
+	margin: 4px 0 8px;
+	padding: 8px;
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	border-radius: 3px;
+	display: inline-block;
+}
+.dbcp-media-preview img {
+	display: block;
+	max-height: 96px;
+	width: auto;
+	max-width: 100%;
+}
+.dbcp-field .required {
+	color: #d63638;
+}
+.dbcp-qr img {
+	display: block;
+	width: 100%;
+	max-width: 240px;
+	height: auto;
+	margin: 0 auto 8px;
+	border: 1px solid #dcdcde;
+	background: #fff;
+}
+.dbcp-qr .dbcp-qr-url {
+	word-break: break-all;
+}
+.dbcp-qr .dbcp-qr-actions {
+	text-align: center;
+	margin-top: 8px;
+}
