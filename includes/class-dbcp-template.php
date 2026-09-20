@@ -31,6 +31,33 @@ class DBCP_Template {
 		add_action( 'template_redirect', array( $this, 'card_page_headers' ) );
 		add_filter( 'show_admin_bar', array( $this, 'hide_admin_bar' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_style' ) );
+		add_shortcode( 'digital_business_card', array( $this, 'shortcode' ) );
+	}
+
+	/**
+	 * The [digital_business_card id="123"] shortcode: embeds a published card.
+	 *
+	 * @param array<string, string>|string $atts Shortcode attributes.
+	 * @return string
+	 */
+	public function shortcode( $atts ): string {
+		$atts    = shortcode_atts( array( 'id' => 0 ), is_array( $atts ) ? $atts : array(), 'digital_business_card' );
+		$post_id = absint( $atts['id'] );
+		if ( ! $post_id ) {
+			return '';
+		}
+		$post = get_post( $post_id );
+		if ( ! $post || DBCP_Post_Type::POST_TYPE !== $post->post_type ) {
+			return '';
+		}
+		if ( 'publish' !== $post->post_status && ! current_user_can( 'edit_post', $post_id ) ) {
+			return '';
+		}
+		if ( ! wp_style_is( self::STYLE_HANDLE, 'registered' ) ) {
+			$this->register_style();
+		}
+		wp_enqueue_style( self::STYLE_HANDLE );
+		return '<div class="dbcp-embed">' . self::render_card( $post_id ) . '</div>';
 	}
 
 	/**
