@@ -3,7 +3,7 @@
  * Plugin Name:       Digital Business Card Posts
  * Plugin URI:        https://github.com/johnjanney/digital-business-card-posts
  * Description:       Digital business card pages, one per person, each with a downloadable vCard and a QR code.
- * Version:           0.1.0
+ * Version:           1.0.0
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            John Janney
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'DBCP_VERSION', '0.1.0' );
+define( 'DBCP_VERSION', '1.0.0' );
 define( 'DBCP_FILE', __FILE__ );
 define( 'DBCP_DIR', plugin_dir_path( __FILE__ ) );
 define( 'DBCP_URL', plugin_dir_url( __FILE__ ) );

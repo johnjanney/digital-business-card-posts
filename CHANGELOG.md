@@ -10,6 +10,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+### Changed
+
+### Fixed
+
+### Removed
+
+## [1.0.0] - 2026-09-20
+
+First release. Implements the v1 scope of PROJECTBRIEF.md §2.
+
+### Added
+
 - Project documents, repository scaffolding, GPL-2.0-or-later license, build script and PHPCS configuration.
 - `business_card` post type with `capability_type => 'business_card'` and `map_meta_cap`, public single view under the configurable rewrite base (default `card`), excluded from site search.
 - Activation grants the full capability set to Administrator and Editor and creates the Card Holder role with the "own" capability set (D19). Deactivation keeps roles and capabilities.
@@ -26,11 +38,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - QR code of each published card's permalink generated with phpqrcode at error-correction level H, cached as `wp-content/uploads/digital-business-card-posts/{post_id}.png`, regenerated automatically when the permalink changes (D17), deleted with the card. Shown in a QR code box on the edit screen with a Download PNG link. Filter `dbcp_qr_module_size`.
 - `[digital_business_card id="123"]` shortcode embedding a published card inside any post or page, with the card stylesheet enqueued.
 - Settings page (Settings → Digital Business Cards): card URL base, default accent color (color picker), default `noindex`, delete data on uninstall. Rewrite rules are flushed when the base changes. Settings link on the Plugins screen.
+- Translation template `languages/digital-business-card-posts.pot`.
 
-### Changed
-
-### Fixed
-
-### Removed
-
-[Unreleased]: https://github.com/johnjanney/digital-business-card-posts/compare/main...HEAD
+[Unreleased]: https://github.com/johnjanney/digital-business-card-posts/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/johnjanney/digital-business-card-posts/releases/tag/v1.0.0
