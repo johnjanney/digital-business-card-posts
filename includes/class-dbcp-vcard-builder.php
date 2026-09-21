@@ -96,11 +96,15 @@ class DBCP_VCard_Builder {
 	 *
 	 * Recognised keys in $fields (all optional strings unless noted): first_name, last_name,
 	 * full_name, job_title, company, phone_work, phone_mobile, email, website, address_street,
-	 * address_suite, address_city, address_state, address_postal, address_country.
+	 * address_suite, address_city, address_state, address_postal, address_country, and revision
+	 * (Unix timestamp, emitted as REV in UTC).
 	 *
-	 * @param array<string, string> $fields     Card fields, raw (unescaped) text.
-	 * @param string                $photo      Binary image data to embed, or empty string for none.
-	 * @param string                $photo_type Image type token for the PHOTO property (JPEG, PNG).
+	 * Property order follows reference/john-janney.vcf: PHOTO comes before ADR, and REV is last, so the
+	 * folded base64 block is never the final property before END:VCARD (D30).
+	 *
+	 * @param array<string, string|int> $fields     Card fields, raw (unescaped) text.
+	 * @param string                    $photo      Binary image data to embed, or empty string for none.
+	 * @param string                    $photo_type Image type token for the PHOTO property (JPEG, PNG).
 	 * @return string The vCard with CRLF line endings.
 	 */
 	public static function build( array $fields, string $photo = '', string $photo_type = 'JPEG' ): string {
@@ -144,6 +148,14 @@ class DBCP_VCard_Builder {
 			$lines[] = 'URL:' . self::escape( $get( 'website' ) );
 		}
 
+		// The photo goes before ADR and REV so that a short text property always follows the
+		// folded base64 block; some Android vCard parsers lose the photo when it is the last
+		// property before END:VCARD (D30). Order otherwise matches reference/john-janney.vcf.
+		if ( '' !== $photo ) {
+			$type    = strtoupper( preg_replace( '/[^A-Za-z]/', '', $photo_type ) );
+			$lines[] = 'PHOTO;ENCODING=b;TYPE=' . ( '' === $type ? 'JPEG' : $type ) . ':' . base64_encode( $photo ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode -- vCard inline photo encoding (RFC 2426).
+		}
+
 		$address_parts = array(
 			$get( 'address_street' ),
 			$get( 'address_suite' ),
@@ -162,9 +174,9 @@ class DBCP_VCard_Builder {
 				. ';' . self::escape( $get( 'address_country' ) );
 		}
 
-		if ( '' !== $photo ) {
-			$type    = strtoupper( preg_replace( '/[^A-Za-z]/', '', $photo_type ) );
-			$lines[] = 'PHOTO;ENCODING=b;TYPE=' . ( '' === $type ? 'JPEG' : $type ) . ':' . base64_encode( $photo ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode -- vCard inline photo encoding (RFC 2426).
+		$revision = isset( $fields['revision'] ) && is_numeric( $fields['revision'] ) ? (int) $fields['revision'] : 0;
+		if ( $revision > 0 ) {
+			$lines[] = 'REV:' . gmdate( 'Ymd\THis\Z', $revision );
 		}
 
 		$lines[] = 'END:VCARD';

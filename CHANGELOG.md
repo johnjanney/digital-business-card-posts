@@ -10,9 +10,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- `REV` property in the vCard, set from the card's last-modified time in UTC, always the last property before `END:VCARD` (D30).
+
 ### Changed
 
 ### Fixed
+
+- The embedded photo was dropped and its base64 text appeared inside the address on Android Contacts. `PHOTO` is now emitted before `ADR` (matching `reference/john-janney.vcf`) and `REV` follows it, so the folded base64 block is never the last property in the file (D30).
 
 ### Removed
 

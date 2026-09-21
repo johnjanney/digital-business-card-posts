@@ -256,6 +256,57 @@ final class VCardBuilderTest extends TestCase {
 		$this->assertStringContainsString( 'PHOTO;ENCODING=b;TYPE=PNG:', $vcard );
 	}
 
+	// -- Property order (D30) ---------------------------------------------------
+
+	public function test_photo_precedes_adr_as_in_the_reference(): void {
+		$lines = $this->unfold( DBCP_VCard_Builder::build( $this->sample(), file_get_contents( DBCP_TESTS_FIXTURES . '/photo.jpg' ) ) );
+		$photo = $adr = null;
+		foreach ( $lines as $i => $line ) {
+			if ( 0 === strpos( $line, 'PHOTO;' ) ) {
+				$photo = $i;
+			} elseif ( 0 === strpos( $line, 'ADR;' ) ) {
+				$adr = $i;
+			}
+		}
+		$this->assertNotNull( $photo );
+		$this->assertNotNull( $adr );
+		$this->assertSame( $photo + 1, $adr, 'ADR must directly follow PHOTO' );
+	}
+
+	public function test_photo_is_never_the_last_property_before_end(): void {
+		$photo = file_get_contents( DBCP_TESTS_FIXTURES . '/photo.jpg' );
+
+		// With an address and a revision.
+		$fields             = $this->sample();
+		$fields['revision'] = 1758326400;
+		$lines              = $this->unfold( DBCP_VCard_Builder::build( $fields, $photo ) );
+		$this->assertSame( 'END:VCARD', end( $lines ) );
+		$this->assertStringStartsWith( 'REV:', prev( $lines ) );
+		$this->assertStringStartsWith( 'ADR;', prev( $lines ) );
+		$this->assertStringStartsWith( 'PHOTO;', prev( $lines ) );
+
+		// Without an address, REV still follows the photo.
+		$fields = array(
+			'first_name' => 'Ada',
+			'last_name'  => 'Lovelace',
+			'revision'   => 1758326400,
+		);
+		$lines  = $this->unfold( DBCP_VCard_Builder::build( $fields, $photo ) );
+		$this->assertSame( 'END:VCARD', end( $lines ) );
+		$this->assertStringStartsWith( 'REV:', prev( $lines ) );
+		$this->assertStringStartsWith( 'PHOTO;', prev( $lines ) );
+	}
+
+	public function test_rev_is_utc_timestamp_and_omitted_without_revision(): void {
+		$fields             = $this->sample();
+		$fields['revision'] = 1758326400; // 2025-09-20 00:00:00 UTC.
+		$this->assertStringContainsString( "\r\nREV:20250920T000000Z\r\n", DBCP_VCard_Builder::build( $fields ) );
+
+		$this->assertStringNotContainsString( 'REV:', DBCP_VCard_Builder::build( $this->sample() ) );
+		$fields['revision'] = 'soon';
+		$this->assertStringNotContainsString( 'REV:', DBCP_VCard_Builder::build( $fields ) );
+	}
+
 	// -- Reference prototype ----------------------------------------------------
 
 	public function test_matches_reference_vcf_structure(): void {

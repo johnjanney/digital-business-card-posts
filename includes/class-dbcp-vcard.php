@@ -155,6 +155,7 @@ class DBCP_VCard {
 			'address_state'   => (string) $meta['address_state'],
 			'address_postal'  => (string) $meta['address_postal'],
 			'address_country' => (string) $meta['address_country'],
+			'revision'        => (int) get_post_modified_time( 'U', true, $post ),
 		);
 
 		/**

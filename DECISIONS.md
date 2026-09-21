@@ -239,3 +239,11 @@ Format per entry: **ID**, date, decision, context, alternatives considered, cons
 - **Context:** Verified on a live site: the REST API only includes the `meta` object for post types that support `custom-fields`, even when every key is registered with `show_in_rest`. Without it D2 (fields available over REST) was not actually met. The generic box would duplicate the Card details box.
 - **Alternatives considered:** Register a custom REST field per meta key (more code, same result); leave meta out of REST.
 - **Consequences:** `GET /wp-json/wp/v2/business-cards/{id}` returns all card fields under `meta`. Amends D2 and D27; neither is reversed.
+
+## D30 — PHOTO is emitted before ADR, and REV is always the last property
+
+- **Date:** 2026-09-20
+- **Decision:** The vCard builder writes properties in the order of `reference/john-janney.vcf`: `N`, `FN`, `ORG`, `TITLE`, `TEL`, `TEL`, `EMAIL`, `URL`, `PHOTO`, `ADR`, then a new `REV` property (the card's `post_modified_gmt` as `YYYYMMDDTHHMMSSZ`), then `END:VCARD`. The folded base64 photo block is therefore never the final property.
+- **Context:** On an Android phone the 1.0.0 vCard opened with no photo and the base64 continuation lines shown as text inside the address. The 1.0.0 builder put `ADR` before `PHOTO`, so the photo block ran straight into `END:VCARD`; the reference file, which works, has `ADR` after the photo. AOSP's vCard 3.0 parser keeps a one-line look-ahead while unfolding, and its base64 reader peeks past that look-ahead; when nothing but `END:VCARD` follows the photo the read hits end-of-file and the client falls back to showing the raw lines. Putting a short text property after the photo avoids the edge case, and `REV` guarantees one exists even for a card with no address.
+- **Alternatives considered:** Only move `PHOTO` before `ADR` (leaves the no-address case exposed); emit `PHOTO` first, right after `FN` (deviates further from the reference); append a blank line after the photo block (vCard 2.1 convention, not valid 3.0).
+- **Consequences:** Every vCard now carries a `REV` line, which Contacts apps ignore or use to detect updates. `dbcp_vcard_fields` receives a `revision` key (Unix timestamp); setting it to `0` removes `REV`. Needs confirmation on a phone (RELEASE-CHECKLIST.md).
