@@ -1,5 +1,17 @@
 <!-- Purpose: results of the PROJECTBRIEF.md §6 checklist for the current release, and the manual tests still pending. Update for every release. -->
 
+# Release checklist — 1.0.1
+
+Date: 2026-09-20. Patch release: only the vCard builder changed (D30). The live-site items below were verified for 1.0.0 and are unchanged by this release; the vCard output was re-verified with the unit tests.
+
+| § | Item | Result | How it was verified |
+|---|------|--------|---------------------|
+| 7 | PHPCS with the WordPress ruleset, zero errors | **Pass** | `composer lint`: 0 errors, 0 warnings. |
+| 8 (part) | Validate a generated `.vcf` | **Pass (structural)** | PHPUnit: 28 builder tests, including three new ones for the property order (PHOTO before ADR, REV last) and the REV format; structural comparison with `reference/john-janney.vcf` still passes. |
+| — | Build | **Pass** | `bin/build.sh` wrote `dist/digital-business-card-posts-1.0.1.zip` from a clean tree. |
+
+The manual tests under "Manual tests pending" now apply to `dist/digital-business-card-posts-1.0.1.zip`.
+
 # Release checklist — 1.0.0
 
 Date: 2026-09-20. Environment for the automated runs: WordPress 7.0 (official Docker image, PHP 8.2 with GD and Imagick, Twenty Twenty-Five theme, pretty permalinks `/%postname%/`), driven by wp-cli, curl and headless Chromium (Playwright). Sample data from PROJECTBRIEF.md §9.
@@ -25,10 +37,10 @@ Date: 2026-09-20. Environment for the automated runs: WordPress 7.0 (official Do
 
 ## Manual tests pending
 
-These need a phone, a Contacts app or an external validator. Test on the installed release (`dist/digital-business-card-posts-1.0.0.zip`) and tick them off here.
+These need a phone, a Contacts app or an external validator. Test on the installed release (`dist/digital-business-card-posts-1.0.1.zip`) and tick them off here.
 
 - [ ] **§6.1** Open `/card/{slug}/` on **iPhone Safari**. Tap **Save contact**. Confirm the contact preview opens and the photo shows.
-- [ ] **§6.1** Open `/card/{slug}/` on **Android Chrome**. Tap **Save contact**. Confirm the contact preview opens (or the `.vcf` downloads and opens in Contacts) and the photo shows. _Failed on 1.0.0: no photo, base64 text inside the address. Fixed by D30 in the next release; retest there, including a card with no address._
+- [ ] **§6.1** Open `/card/{slug}/` on **Android Chrome**. Tap **Save contact**. Confirm the contact preview opens (or the `.vcf` downloads and opens in Contacts) and the photo shows. _Failed on 1.0.0: no photo, base64 text inside the address. Fixed by D30 in 1.0.1; retest there, including a card with no address._
 - [ ] **§6.2** In the saved contact on iPhone and Android, confirm the two numbers are labelled **work** and **mobile**.
 - [ ] **§6.3** Scan the downloaded QR PNG (and the on-screen code in the edit screen) with the **iPhone Camera** and with **Google Lens**. Confirm it opens the card URL.
 - [ ] **§6.8** Run a generated `.vcf` through an online vCard validator.

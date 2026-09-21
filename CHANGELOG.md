@@ -10,15 +10,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
-- `REV` property in the vCard, set from the card's last-modified time in UTC, always the last property before `END:VCARD` (D30).
-
 ### Changed
 
 ### Fixed
 
-- The embedded photo was dropped and its base64 text appeared inside the address on Android Contacts. `PHOTO` is now emitted before `ADR` (matching `reference/john-janney.vcf`) and `REV` follows it, so the folded base64 block is never the last property in the file (D30).
-
 ### Removed
+
+## [1.0.1] - 2026-09-20
+
+### Added
+
+- `REV` property in the vCard, set from the card's last-modified time in UTC, always the last property before `END:VCARD` (D30).
+
+### Fixed
+
+- The embedded photo was dropped and its base64 text appeared inside the address on Android Contacts. `PHOTO` is now emitted before `ADR` (matching `reference/john-janney.vcf`) and `REV` follows it, so the folded base64 block is never the last property in the file (D30).
 
 ## [1.0.0] - 2026-09-20
 
@@ -44,5 +50,6 @@ First release. Implements the v1 scope of PROJECTBRIEF.md §2.
 - Settings page (Settings → Digital Business Cards): card URL base, default accent color (color picker), default `noindex`, delete data on uninstall. Rewrite rules are flushed when the base changes. Settings link on the Plugins screen.
 - Translation template `languages/digital-business-card-posts.pot`.
 
-[Unreleased]: https://github.com/johnjanney/digital-business-card-posts/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/johnjanney/digital-business-card-posts/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/johnjanney/digital-business-card-posts/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/johnjanney/digital-business-card-posts/releases/tag/v1.0.0
