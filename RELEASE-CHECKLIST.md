@@ -40,7 +40,7 @@ Date: 2026-09-20. Environment for the automated runs: WordPress 7.0 (official Do
 These need a phone, a Contacts app or an external validator. Test on the installed release (`dist/digital-business-card-posts-1.0.1.zip`) and tick them off here.
 
 - [ ] **§6.1** Open `/card/{slug}/` on **iPhone Safari**. Tap **Save contact**. Confirm the contact preview opens and the photo shows.
-- [ ] **§6.1** Open `/card/{slug}/` on **Android Chrome**. Tap **Save contact**. Confirm the contact preview opens (or the `.vcf` downloads and opens in Contacts) and the photo shows. _Failed on 1.0.0: no photo, base64 text inside the address. Fixed by D30 in 1.0.1; retest there, including a card with no address._
+- [x] **§6.1** Open `/card/{slug}/` on **Android Chrome**. Tap **Save contact**. Confirm the contact preview opens (or the `.vcf` downloads and opens in Contacts) and the photo shows. _Failed on 1.0.0: no photo, base64 text inside the address. Fixed by D30; **passed on 1.0.1** (2026-09-20, photo shows). Card without an address not yet tested._
 - [ ] **§6.2** In the saved contact on iPhone and Android, confirm the two numbers are labelled **work** and **mobile**.
 - [ ] **§6.3** Scan the downloaded QR PNG (and the on-screen code in the edit screen) with the **iPhone Camera** and with **Google Lens**. Confirm it opens the card URL.
 - [ ] **§6.8** Run a generated `.vcf` through an online vCard validator.
